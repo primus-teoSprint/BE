@@ -7,7 +7,7 @@ const swaggerUi = require("swagger-ui-express");
 const swaggerJsDoc = require("swagger-jsdoc");
 const toolDetailRoutes = require("./routes/toolDetailRoutes");
 
-dotenv.config({ path: path.join(__dirname, "../.env") });
+dotenv.config({ path: path.join(__dirname, "../.env.local") });
 const swaggerSpec = require("./config/swagger");
 
 const app = express();
@@ -24,7 +24,7 @@ console.log("Connected to MongoDB :)");
 
 // "/api" 경로에 대한 get 요청 테스트
 app.get("/api", (req, res) => {
-  res.send("hello teo-sprint-17-9team haha");
+  res.send("8001 test");
 });
 
 // Middleware
@@ -46,7 +46,7 @@ const swaggerOptions = {
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Use routes
-app.use("/api/toolDetails", toolDetailRoutes);
+app.use(`${process.env.API_NAME}/toolDetails`, toolDetailRoutes);
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
