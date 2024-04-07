@@ -1,8 +1,6 @@
 const swaggerJSDoc = require("swagger-jsdoc");
 // const dotenv = require("dotenv");
 
-// dotenv.config({ path: path.join(__dirname, "../.env.local") });
-
 const options = {
   definition: {
     openapi: "3.0.0",
@@ -19,7 +17,7 @@ const options = {
       },
     ],
   },
-  apis: ["./routes/*.js"], // 파일 경로는 프로젝트에 맞게 조정
+  apis: ["./src/routes/*.js"], // 파일 경로는 프로젝트에 맞게 조정
 };
 
 const swaggerSpec = swaggerJSDoc(options);
