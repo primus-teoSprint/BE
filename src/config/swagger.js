@@ -19,7 +19,7 @@ const options = {
       },
     ],
   },
-  apis: ["./src/routes/*.js"], // 파일 경로는 프로젝트에 맞게 조정
+  apis: ["./routes/*.js"], // 파일 경로는 프로젝트에 맞게 조정
 };
 
 const swaggerSpec = swaggerJSDoc(options);

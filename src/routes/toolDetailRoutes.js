@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const toolDetailsController = require("../controllers/toolDetailController");
+const toolDetailController = require("../controllers/toolDetailController");
 
 /**
  * @swagger
- * /tool-details:
+ * /api/toolDetails:
  *   get:
  *     summary: Returns a list of all tool details
  *     responses:
@@ -50,6 +50,6 @@ const toolDetailsController = require("../controllers/toolDetailController");
  *           items:
  *             type: string
  */
-router.get("/", toolDetailsController.getAllToolDetails);
+router.get("/", toolDetailController.getAllToolDetails);
 
 module.exports = router;
