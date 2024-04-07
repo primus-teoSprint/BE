@@ -4,18 +4,40 @@ const dotenv = require("dotenv");
 const path = require("path");
 const mongoose = require("mongoose");
 const swaggerUi = require("swagger-ui-express");
+const swaggerJsDoc = require("swagger-jsdoc");
+const toolDetailRoutes = require("./routes/toolDetailRoutes");
 
 const swaggerSpec = require("./config/swagger");
 
 const app = express();
-const PORT = 8000;
 
-// "/" 경로에 대한 GET 요청 처리
-app.get("/api", (req, res) => {
-  res.send("hello teo-sprint-17-9team!!");
+// MongoDB connection
+mongoose.connect("mongodb://127.0.0.1:27017/STLab", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 });
 
-// 서버 시작
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+// Middleware
+app.use(express.json());
+
+// Swagger setup
+const swaggerOptions = {
+  definition: {
+    openapi: "3.0.0",
+    info: {
+      title: "Tool Details API",
+      version: "1.0.0",
+      description: "API for managing tool details",
+    },
+  },
+  apis: ["./routes/*.js"], // files containing annotations as above
+};
+
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+
+// Use routes
+app.use("/toolDetails", toolDetailRoutes);
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
