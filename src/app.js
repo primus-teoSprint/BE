@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const swaggerUi = require("swagger-ui-express");
 const swaggerJsDoc = require("swagger-jsdoc");
 const toolDetailRoutes = require("./routes/toolDetailRoutes");
+const toolTemplateRoutes = require("./routes/toolTemplateRoutes");
 
 dotenv.config({ path: path.join(__dirname, "../.env.local") });
 const swaggerSpec = require("./config/swagger");
@@ -47,6 +48,7 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Use routes
 app.use(`${process.env.API_NAME}/toolDetails`, toolDetailRoutes);
+app.use(`${process.env.API_NAME}/toolTemplates`, toolTemplateRoutes);
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

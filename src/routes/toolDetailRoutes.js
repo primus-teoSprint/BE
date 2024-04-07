@@ -6,7 +6,7 @@ const toolDetailController = require("../controllers/toolDetailController");
  * @swagger
  * /api/toolDetails:
  *   get:
- *     summary: 검증 방식 세부 정보 목록 검색
+ *     summary: 검증 방식 세부 정보 목록
  *     description: 각 검증 방식에 대한 세부 정보를 포함하는 목록을 반환합니다.
  *     tags: [Tool Detail API]
  *     parameters:
