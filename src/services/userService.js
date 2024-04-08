@@ -22,7 +22,7 @@ exports.signInKakaoService = async (kakaoToken) => {
   }
 
   const token = jwt.sign({ id: user._id }, `${process.env.JWT_SECRET_KEY}`, {
-    expiresIn: "1h",
+    expiresIn: "24h",
   });
   return { token, user };
 };

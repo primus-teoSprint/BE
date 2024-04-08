@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const toolTemplateController = require("../controllers/toolTemplateController");
+const authMiddleware = require("../middleware/authMiddleware");
 
 /**
  * @swagger
@@ -60,6 +61,6 @@ const toolTemplateController = require("../controllers/toolTemplateController");
  *       400:
  *         description: 입력 데이터 오류
  */
-router.post("/", toolTemplateController.createTemplate);
+router.post("/", authMiddleware, toolTemplateController.createTemplate);
 
 module.exports = router;

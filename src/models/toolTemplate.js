@@ -2,6 +2,11 @@ const mongoose = require("mongoose");
 
 const toolTemplateSchema = new mongoose.Schema(
   {
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
     toolName: { type: String, required: true },
     ideaOverview: { type: String, required: true },
     thinkBackground: { type: String, required: true },
