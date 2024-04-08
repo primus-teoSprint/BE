@@ -42,9 +42,24 @@ const { createTheory } = require("../controllers/investIndicatorController");
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/Theory'
+ *               $ref: '#/components/schemas/InvestIndicator'
  *       500:
  *         description: 서버 오류
+ *
+ * components:
+ *   schemas:
+ *     InvestIndicator:
+ *       type: object
+ *       properties:
+ *         indicatorName:
+ *           type: string
+ *           description: 지표의 이름
+ *         indicatorValue:
+ *           type: number
+ *           description: 지표의 값
+ *         description:
+ *           type: string
+ *           description: 지표에 대한 설명
  */
 router.post("/", createTheory);
 
