@@ -55,7 +55,7 @@ const swaggerOptions = {
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Use routes
-app.use(`/api-dev/auth`, userRoutes);
+app.use(`${process.env.API_NAME}/auth`, userRoutes);
 app.use(`${process.env.API_NAME}/toolDetails`, toolDetailRoutes);
 app.use(`${process.env.API_NAME}/toolTemplates`, toolTemplateRoutes);
 

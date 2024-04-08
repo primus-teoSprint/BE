@@ -21,7 +21,7 @@ exports.signInKakaoService = async (kakaoToken) => {
     await user.save();
   }
 
-  const token = jwt.sign({ id: user._id }, "tempkey", {
+  const token = jwt.sign({ id: user._id }, "tempkey_primus_services", {
     expiresIn: "1h",
   });
   return { token, user };
