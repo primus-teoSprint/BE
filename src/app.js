@@ -28,7 +28,12 @@ console.log("Connected to MongoDB :)");
 // CORS 설정(cors 미들웨어를 이용해서 일일히 헤더 이름을 타이핑 안해도 된다.)
 app.use(
   cors({
-    origin: [process.env.API_URL, process.env.LOCAL_URL, process.env.BASE_URL], // cors 미들웨어는 'url' 대신 'origin'을 사용
+    origin: [
+      process.env.API_URL,
+      process.env.LOCAL_URL,
+      process.env.ORIGIN_URL,
+      process.env.BASE_URL,
+    ], // cors 미들웨어는 'url' 대신 'origin'을 사용
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTION",
     preflightContinue: false,
     exposedHeaders: ["Content-Range"],
