@@ -8,6 +8,7 @@ const swaggerJsDoc = require("swagger-jsdoc");
 const userRoutes = require("./routes/userRoutes");
 const toolDetailRoutes = require("./routes/toolDetailRoutes");
 const toolTemplateRoutes = require("./routes/toolTemplateRoutes");
+const investIndicatorRoutes = require("./routes/investIndicatorRoutes");
 
 dotenv.config({ path: path.join(__dirname, "../.env.local") });
 const swaggerSpec = require("./config/swagger");
@@ -53,11 +54,13 @@ const swaggerOptions = {
 };
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use("/api-dev/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Use routes
 app.use(`${process.env.API_NAME}/auth`, userRoutes);
 app.use(`${process.env.API_NAME}/toolDetails`, toolDetailRoutes);
 app.use(`${process.env.API_NAME}/toolTemplates`, toolTemplateRoutes);
+app.use(`${process.env.API_NAME}/investIndicator`, investIndicatorRoutes);
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
